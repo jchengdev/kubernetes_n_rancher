@@ -1,21 +1,22 @@
 # De onde deve ser pega a imagem e a versão. Nesse caso do repositório padrão do Docker, a imagem do node
 
 # FROM node:alpine
-FROM daveamit/node-alpine-grpc
+FROM daveamit/node-alpine-grpc:v9.0.0
 
 # Autor/Mantenedor
-MAINTAINER Jonathan Baraldi
+# MAINTAINER Jonathan Baraldi
 
 # Prover camada de cached para os módulos do Node
-RUN cd /tmp && npm install
+WORKDIR /tmp
+RUN npm install
 
 RUN mkdir -p /src 
 	# Instalar MariaDB SQL e rodar o script para injetar o SQL
 
-RUN npm install mysql
+RUN npm install mysql@2.18.1
 	# Definir diretório de trabalho
 WORKDIR /src
-ADD . /src
+COPY . /src
 
 	# Expor porta 80
 EXPOSE  8080
