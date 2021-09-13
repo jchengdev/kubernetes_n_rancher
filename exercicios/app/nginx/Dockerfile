@@ -1,8 +1,8 @@
 	# Setar a imagem do nginx
-FROM nginx
+FROM nginx:1.21.3
 
 	# Autor/Mantenedor
-MAINTAINER Jonathan Baraldi
+# MAINTAINER Jonathan Baraldi
 
 	# Copiar configurações customizadas do diretório atual
 COPY nginx.conf /etc/nginx/nginx.conf
