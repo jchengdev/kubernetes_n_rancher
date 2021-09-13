@@ -5,20 +5,22 @@ services:
     
     nginx:
         restart: "always"
-        image: <dockerhub-user>/nginx:devops
+        image: jchengdeveng/k8s-rancher-nginx:latest
         ports:
             - "80:80"
-        links:
-            # Colocar mais nós para escalar
-            - node
-            # - node-2
-            
+        # links:
+        #     # Colocar mais nós para escalar
+        #     - node
+        #     # - node-2
+        networks: 
+          - k8s-rancher    
     redis:
         restart: "always"
-        image: <dockerhub-user>/redis:devops
+        image: jchengdeveng/k8s-rancher-redis:latest
         ports:
             - 6379
-
+        networks:
+          - k8s-rancher
     mysql:
         restart: "always"
         image: mysql
@@ -29,15 +31,18 @@ services:
             MYSQL_DATABASE: books
             MYSQL_USER: apitreinamento
             MYSQL_PASSWORD: 123 
-    
+        networks: 
+          - k8s-rancher
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     node:
         restart: "always"
-        image: <dockerhub-user>/node:devops
-        links:
-            - redis
-            - mysql
+        image: jchengdeveng/k8s-rancher-node:latest
+        # links:
+        #     - redis
+        #     - mysql
+        networks: 
+          - k8s-rancher
         ports:
             - 8080
         volumes:
@@ -49,4 +54,7 @@ services:
 volumes:
     volumeteste:
         external: false
+networks: 
+  k8s-rancher:
+    name: k8s-rancher
 
