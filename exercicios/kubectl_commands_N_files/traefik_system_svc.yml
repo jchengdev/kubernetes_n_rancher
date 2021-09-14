@@ -64,7 +64,7 @@ metadata:
 spec:
   selector:
     k8s-app: traefik-ingress-lb
-  type: LoadBalancer
+  type: LoadBalancer # required in GCP, the way it is structured
   ports:
     - protocol: TCP
       port: 80
