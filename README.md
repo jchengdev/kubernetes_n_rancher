@@ -16,3 +16,6 @@ Original repo: `https://github.com/jonathanbaraldi/devops`
 - `kubectl apply -f ./kubectl_commands_N_files/traefik_system_svc.yml`
 - `kubectl describe -n traefik-system ds/traefik-ingress-controller`
 - `kubectl get svc -n traefik-system`
+- (fix nodes driver issue: GKE with Ubuntu-containerd OS image)
+- `kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=<my@email.com>`
+- (longhorn installation via Apps & Marketplace)
