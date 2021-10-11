@@ -1,4 +1,3 @@
-
 # Developer Notes
 
 Ongoing demo creation
@@ -12,10 +11,12 @@ Original repo: `https://github.com/jonathanbaraldi/devops`
 ## Command List
 
 - `kubectl create ns traefik-system`
-- `kubectl apply -f ./kubectl_commands_N_files/traefik_rbac.yml`
-- `kubectl apply -f ./kubectl_commands_N_files/traefik_system_svc.yml`
-- `kubectl describe -n traefik-system ds/traefik-ingress-controller`
+- `helm repo add traefik https://helm.traefik.io/traefik`
+- `helm repo update`
+- `helm install --namespace=traefik-system traefik-ingress-controller traefik/traefik`
 - `kubectl get svc -n traefik-system`
+- `kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name -n traefik-system | head -n 1) 9000:9000 -n traefik-system`
+- `kubectl apply -f ./kubectl_commands_N_files/traefik_dashboard.yml`
 - (fix nodes driver issue: GKE with Ubuntu-containerd OS image)
 - `kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=<my@email.com>`
 - (longhorn installation via Apps & Marketplace)

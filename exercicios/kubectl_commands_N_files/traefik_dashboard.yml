@@ -1,0 +1,14 @@
+# CRD definitions already added with `helm install --namespace=traefik-system traefik-ingress-controller traefik/traefik`
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-exposed-dashboard
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`traefik.k8s-sample-gke.jchengdev.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
