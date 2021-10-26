@@ -1,8 +1,8 @@
 # Developer Notes
 
-Ongoing demo creation
-
 Original repo: `https://github.com/jonathanbaraldi/devops`
+
+Demo: `https://github.com/jchengdev/k8s-sample-gke`
 
 ## Ignore List
 
@@ -10,6 +10,7 @@ Original repo: `https://github.com/jonathanbaraldi/devops`
 
 ## Command List
 
+- (cluster creation and kubeconfig setup)
 - `kubectl create ns traefik-system`
 - `helm repo add traefik https://helm.traefik.io/traefik`
 - `helm repo update`
